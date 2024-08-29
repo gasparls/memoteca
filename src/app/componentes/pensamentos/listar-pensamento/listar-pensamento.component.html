@@ -3,10 +3,16 @@
         <h2 class="ff-inter">Meu Mural</h2>
         <button routerLink="/criarPensamento" class="botao">Adicionar Pensamento</button>
     </header>
-    <div class="mural">
+    <div class="mural" *ngIf="listaPensamento.length > 0 else semPensamento">
         <div *ngFor="let pensamento of listaPensamento">
-            <app-pensamento></app-pensamento>
+            <app-pensamento [pensamento]="pensamento"></app-pensamento>
         </div>
-
     </div>
 </section>
+
+<ng-template #semPensamento>
+    <div class="ff-inter semPensamentos">
+        <p>Ainda não há pensamentos</p>
+    </div>
+</ng-template>
+
